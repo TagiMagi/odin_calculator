@@ -1,4 +1,3 @@
-
 let firstNum = 0;
 let secondNum = 0;
 let operator;
@@ -21,26 +20,53 @@ div (a, b) {
 
 }
 
-function operate (x, y, op) {
-  x = Number(prompt("x: " ));
-  op = prompt("op: ");
-  y = Number(prompt("y: " ));
+function operation (x, y, op) {
+  x1 = Number(x);
+  y1 = Number(y);
 
- 
-  
     switch (op) {
         case "+":
-         return opType.add(x, y);
+         console.log(x1, y1)
+         return opType.add(x1, y1);
         case "-":
-         return opType.sub(x, y);
+         return opType.sub(x1, y1);
         case "*": 
-         return opType.multi(x, y);
+         return opType.multi(x1, y1);
         case "/": 
-         return opType.div(x, y);
+         return opType.div(x1, y1);
     } 
     return false; 
 }
 
+function operate () {
+    let disArray = screen.textContent.split("");
+    console.log(disArray);
+    let opArrayX;
+    let opArrayY;
+    let sign;
+    for (let i = 0; i < disArray.length; i++) {
+        if (disArray[i] === "+" || disArray[i] === "-" || disArray[i] === "*" || disArray[i] === "/") {
+            sign = disArray[i];
+            opArrayX = disArray.slice(0, [i]).join("");
+            console.log(opArrayX)
+            disArray.splice(0, [i+1]);
+            break; 
+        }
+    }
+        for (let i = 0; i < disArray.length; i++) {
+            if (disArray[i] === "+" || disArray[i] === "-" || disArray[i] === "*" || disArray[i] === "/") {
+                opArrayY = disArray.slice(0, [i]).join("");
+                disArray.splice(0, [i])
+                break; 
+            }
+        }
+        if (opArrayY != true) {
+            opArrayY = disArray.toString();
+        }
+        screen.textContent = "";
+        resultDisplay = document.createTextNode(operation(opArrayX, opArrayY, sign))
+        screen.appendChild(resultDisplay);
+}
 
 function showButtons () {
 if (screen.textContent == 0 && numOfTimes == 0) {
@@ -67,12 +93,12 @@ let digits = document.querySelectorAll(".digit");
 let clear = document.querySelector(".clear");
 let operations = document.querySelectorAll(".operation");
 let equals = document.querySelector(".equal");
-screen.textContent.placeholder = "0"; 
+ 
 
 digits.forEach(digit => digit.addEventListener('click', showButtons));
 operations.forEach(operation => operation.addEventListener('click', showButtons));
 clear.addEventListener('click', clearDisplay);
-//equals.addEventListener('click',  )
+equals.addEventListener('click', operate);
 
 
 //window.onload = console.log(operate());
