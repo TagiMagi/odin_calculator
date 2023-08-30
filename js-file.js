@@ -2,7 +2,6 @@ let firstNum = 0;
 let secondNum = 0;
 let operator;
 
-
 let opType = {
 
 add (a, b) {
@@ -39,6 +38,7 @@ function operation (x, y, op) {
 }
 
 function operate () {
+    equalClicked = true;
     let disArray = screen.textContent.split("");
     console.log(disArray);
     let opArrayX;
@@ -69,24 +69,29 @@ function operate () {
 }
 
 function showButtons () {
-if (screen.textContent == 0 && numOfTimes == 0) {
-    screen.textContent = "";
-}
+if (equalClicked == false) {
+    
+    if (screen.textContent == 0 && numOfTimes == 0) {
+        screen.textContent = "";
+    }
 
-if (numOfTimes < 25) {
-let text = this.textContent;
-textDisplayed = document.createTextNode(`${text}`);
-screen.appendChild(textDisplayed);
-numOfTimes++;
+    if (numOfTimes < 25) {
+    let text = this.textContent;
+    textDisplayed = document.createTextNode(`${text}`);
+    screen.appendChild(textDisplayed);
+    numOfTimes++;
+    }
 }
 }
 
 function clearDisplay () {
+    equalClicked = false;
     screen.textContent = "0"; 
     numOfTimes = 0;
 }
 
 let numOfTimes = 0;
+let equalClicked = false;
 
 let screen = document.querySelector(".display");
 let digits = document.querySelectorAll(".digit");
