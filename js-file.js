@@ -61,7 +61,7 @@ function operate () {
             }
         }
         if (opArrayY != true) {
-            opArrayY = disArray.toString();
+            opArrayY = disArray.join("");
         }
         screen.textContent = "";
         resultDisplay = document.createTextNode(operation(opArrayX, opArrayY, sign))
