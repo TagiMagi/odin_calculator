@@ -41,4 +41,38 @@ function operate (x, y, op) {
     return false; 
 }
 
-window.onload = console.log(operate());
+
+function showButtons () {
+if (screen.textContent == 0 && numOfTimes == 0) {
+    screen.textContent = "";
+}
+
+if (numOfTimes < 25) {
+let text = this.textContent;
+textDisplayed = document.createTextNode(`${text}`);
+screen.appendChild(textDisplayed);
+numOfTimes++;
+}
+}
+
+function clearDisplay () {
+    screen.textContent = "0"; 
+    numOfTimes = 0;
+}
+
+let numOfTimes = 0;
+
+let screen = document.querySelector(".display");
+let digits = document.querySelectorAll(".digit");
+let clear = document.querySelector(".clear");
+let operations = document.querySelectorAll(".operation");
+let equals = document.querySelector(".equal");
+screen.textContent.placeholder = "0"; 
+
+digits.forEach(digit => digit.addEventListener('click', showButtons));
+operations.forEach(operation => operation.addEventListener('click', showButtons));
+clear.addEventListener('click', clearDisplay);
+//equals.addEventListener('click',  )
+
+
+//window.onload = console.log(operate());
