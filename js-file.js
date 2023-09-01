@@ -25,7 +25,6 @@ function operation (x, y, op) {
 
     switch (op) {
         case "+":
-         console.log(x1, y1)
          return opType.add(x1, y1);
         case "-":
          return opType.sub(x1, y1);
@@ -38,35 +37,79 @@ function operation (x, y, op) {
 }
 
 function operate () {
+    if (equalClicked === false) {
     equalClicked = true;
-    let disArray = screen.textContent.split("");
-    console.log(disArray);
+    let result;
     let opArrayX;
-    let opArrayY;
-    let sign;
-    for (let i = 0; i < disArray.length; i++) {
-        if (disArray[i] === "+" || disArray[i] === "-" || disArray[i] === "*" || disArray[i] === "/") {
-            sign = disArray[i];
-            opArrayX = disArray.slice(0, [i]).join("");
-            console.log(opArrayX)
-            disArray.splice(0, [i+1]);
-            break; 
-        }
-    }
-        for (let i = 0; i < disArray.length; i++) {
-            if (disArray[i] === "+" || disArray[i] === "-" || disArray[i] === "*" || disArray[i] === "/") {
-                opArrayY = disArray.slice(0, [i]).join("");
-                disArray.splice(0, [i])
-                break; 
+    let opArrayY = '';
+    let disArray = screen.textContent.split("");
+    let disArrayNew = [...disArray]
+    let arrayOfOps = disArray.filter(n => {return n === "+" || n === "-" || n === "*" || n === "/"});
+    //console.log(arrayOfOps); 
+        for (const i in disArray) {
+            if (!result) {
+            if (disArray[i] === arrayOfOps[0]) {
+                opArrayX = disArray.slice(0, i).join('');
+                let sign = disArray[i];
+                let disArrayCopy = [...disArray];
+                disArrayCopy.splice(0, i);
+                disArrayCopy.shift();
+                    for (let i = 0; i < disArrayCopy.length; i++) {
+                        if (disArrayCopy[i] == "+" || disArrayCopy[i] == "-" || disArrayCopy[i] == "*" || disArrayCopy[i] == "/") {
+                        break;
+                        }
+                         opArrayY += disArrayCopy[0]
+                        }
+                //console.log(opArrayX)
+                console.log(opArrayY)
+                //console.log(disArrayCopy);
+                result = operation(opArrayX, opArrayY, sign);
+                arrayOfOps.shift();
+                disArrayNew = disArrayNew.slice(i);
+                disArrayNew.shift();
+                opArrayY = "";
+                console.log(arrayOfOps);
             }
         }
-        if (opArrayY != true) {
-            opArrayY = disArray.join("");
-        }
-        screen.textContent = "";
-        resultDisplay = document.createTextNode(operation(opArrayX, opArrayY, sign))
-        screen.appendChild(resultDisplay);
+        
+        if (disArray[i] === arrayOfOps[0]) {
+        let sign = disArray[i];
+        let disArrayCopy = [...disArray];
+        disArrayCopy.splice(0, i);
+        disArrayCopy.shift();
+        for (let i = 0; i < disArrayCopy.length; i++) {
+            if (disArrayCopy[i] == "+" || disArrayCopy[i] == "-" || disArrayCopy[i] == "*" || disArrayCopy[i] == "/") {
+            break;
+            }
+             opArrayY += disArrayCopy[0]
+            }
+        opArrayX = result; 
+        console.log(opArrayX)
+        result = operation(opArrayX, opArrayY, sign);
+        arrayOfOps.shift();
+        disArrayNew = disArrayNew.slice(i);
+        disArrayNew.shift();
+        opArrayY = "";
+        }    
+        }   
+    screen.textContent = "";
+    resultDisplay = document.createTextNode((result));
+    screen.appendChild(resultDisplay);
 }
+}
+
+    
+        
+    
+
+    
+    
+       /* screen.textContent = "";
+        resultDisplay = document.createTextNode(operation(opArrayX, opArrayY, sign))
+        screen.appendChild(resultDisplay);*/
+
+
+
 
 function showButtons () {
 if (equalClicked == false) {
