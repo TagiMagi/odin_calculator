@@ -3,5 +3,33 @@
     margin: 10px; 
     height: 20px;
     width: 200px;
+    padding:0px 4px;
+}
+
+#container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    border-color: black;
+    border-style: solid;
     
+}
+.container {
+    width: 250px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+button {
+    width: 50px;
+    height: 50px;
+    margin: 1.8px;
+    color:aliceblue;
+    background-color:black;
+    border-color: lightslategray;
+    border-radius: 3px;
 }

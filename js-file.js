@@ -37,15 +37,14 @@ function operation (x, y, op) {
 }
 
 function operate () {
-    if (equalClicked === false) {
-    equalClicked = true;
+    
     let result;
     let opArrayX;
     let opArrayY = '';
     let disArray = screen.textContent.split("");
     let disArrayNew = [...disArray]
     let arrayOfOps = disArray.filter(n => {return n === "+" || n === "-" || n === "*" || n === "/"});
-    //console.log(arrayOfOps); 
+    
         for (const i in disArray) {
             if (!result) {
             if (disArray[i] === arrayOfOps[0]) {
@@ -60,9 +59,7 @@ function operate () {
                         }
                          opArrayY += disArrayCopy[i];
                         }
-                //console.log(opArrayX)
                 console.log(opArrayX)
-                //console.log(disArrayCopy);
                 result = String(operation(opArrayX, opArrayY, sign));
                 arrayOfOps.shift();
                 disArrayNew = disArray.slice(i);
@@ -99,7 +96,7 @@ function operate () {
     resultDisplay = document.createTextNode((result));
     screen.appendChild(resultDisplay);
 }
-}
+
 
     
         
@@ -115,7 +112,7 @@ function operate () {
 
 
 function showButtons () {
-if (equalClicked == false) {
+
     
     if (screen.textContent == 0 && numOfTimes == 0) {
         screen.textContent = "";
@@ -127,11 +124,10 @@ if (equalClicked == false) {
     screen.appendChild(textDisplayed);
     numOfTimes++;
     }
-}
+
 }
 
 function clearDisplay () {
-    equalClicked = false;
     screen.textContent = "0"; 
     numOfTimes = 0;
 }
