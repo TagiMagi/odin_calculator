@@ -91,6 +91,9 @@ function operate () {
         opArrayY = "";
         }    
         }
+        if (result === "Infinity") {
+            result = "Super Impossible!"
+        }
     }   
     screen.textContent = "";
     resultDisplay = document.createTextNode((result));
