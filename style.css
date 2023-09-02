@@ -1,9 +1,12 @@
 .display {
-    border: solid black;
-    margin: 10px; 
+    border: solid silver;
+    border-radius: 3px;
+    background-color:black;
+    color:turquoise;
     height: 20px;
     width: 200px;
     padding:0px 4px;
+    margin: 0px 0px 6px 0px;
 }
 
 #container {
@@ -12,8 +15,6 @@
     justify-content: center;
     align-items: center;
     height: 100vh;
-    border-color: black;
-    border-style: solid;
     
 }
 .container {
@@ -27,9 +28,20 @@
 button {
     width: 50px;
     height: 50px;
-    margin: 1.8px;
-    color:aliceblue;
+    margin: 1.7px;
+    color: turquoise;
     background-color:black;
     border-color: lightslategray;
     border-radius: 3px;
+}
+
+.calculator {
+    display: flex; 
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-style: solid;
+    padding: 10px;
+    background-color: silver;
+
 }
